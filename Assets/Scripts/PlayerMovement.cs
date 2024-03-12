@@ -100,10 +100,25 @@ public class PlayerMovement : MonoBehaviour
         else if (other.gameObject.CompareTag("Finish"))
         {
             Debug.Log("Collision PORTAL");
-            SceneManager.LoadScene("MainMenu");
+            SceneManager.LoadScene("GameOver");
+        }
+        else if (other.gameObject.CompareTag("Block"))
+        {
+            foreach(ContactPoint2D hitPos in other.contacts)
+            {
+                if (!(hitPos.normal.y > 0f))
+                {
+                    Debug.Log("HIT Y: " + hitPos.normal.y + ", X: " + hitPos.normal.x);
+                    SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                }
+
+            }
+
         }
 
 
     }
 
 }
+
+

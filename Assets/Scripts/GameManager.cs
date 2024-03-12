@@ -18,6 +18,14 @@ public class GameManager : MonoBehaviour
         playerSprite = selectedCharacter.GetComponent<SpriteRenderer>().sprite;
         player.GetComponent<SpriteRenderer>().sprite = playerSprite;
     }
+
+    private void Update()
+    {
+        if(Input.GetKey(KeyCode.Escape))
+        {
+            Pause();
+        }
+    }
     public void Pause()
     {
         pauseMenu.SetActive(true);
